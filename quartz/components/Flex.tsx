@@ -33,12 +33,12 @@ export default ((config: FlexConfig) => {
           const shrink = (c.shrink ?? true) ? 1 : 0
           const basis = c.basis ?? "auto"
           const order = c.order ?? 0
-          const align = c.align ?? "center"
+          const align = c.align
           const justify = c.justify ?? "center"
 
           return (
             <div
-              style={`flex-grow: ${grow}; flex-shrink: ${shrink}; flex-basis: ${basis}; order: ${order}; align-self: ${align}; justify-self: ${justify};`}
+              style={`flex-grow: ${grow}; flex-shrink: ${shrink}; flex-basis: ${basis}; order: ${order}; ${align != undefined ? `align-self: ${align};` : ""} justify-self: ${justify};`}
             >
               <c.Component {...props} />
             </div>
